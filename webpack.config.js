@@ -1,14 +1,26 @@
 const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: "./src/index.js",
   output: {
-    filename: "app.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "build"),
+    filename: "bundle.js",
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    port: 9000
+    static: {
+      directory: path.join(__dirname, 'build'),
+    },
+    hot: true,
+    compress: true,
+    port: 9000,
   },
-  mode: "development"
+  mode: "development",
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Webpack Application',
+      filename: 'index.html',
+      template: 'src/template.html'
+    })
+  ]
 };
