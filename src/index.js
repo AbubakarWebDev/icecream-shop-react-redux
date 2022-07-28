@@ -1,14 +1,19 @@
-import { store } from "./store";
-import { orderCake } from "./actions";
-
-console.log(store.getState());
+import { store, actions } from "./store";
 
 const unsubscribe = store.subscribe(() => {
     console.log(store.getState());
 })
 
-store.dispatch(orderCake());
-store.dispatch(orderCake());
-store.dispatch(orderCake());
+// actions.orderCake();
+// actions.orderCake();
+// actions.orderCake();
+// actions.restokeCake(3);
 
-unsubscribe();
+// actions.orderIceCream();
+// actions.orderIceCream();
+// actions.orderIceCream();
+// actions.restokeIceCream(3);
+
+actions.fetchUsers();
+
+// unsubscribe();
